@@ -10,7 +10,7 @@ export const getLogin = async (email, password, cancelToken)=>{
     const response = await apiClient(email, password, cancelToken).get(endpoint);
     
     if (response.ok){
-        user=response.data.user
+        user=response.data
     }else if (response.status ===401){
         error="Invalid Email/Password"
     }else{
@@ -18,5 +18,9 @@ export const getLogin = async (email, password, cancelToken)=>{
     }
     
     
-    return response.ok
+    return{
+        error,
+        user
+        
+    };
 }
