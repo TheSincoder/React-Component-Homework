@@ -14,6 +14,7 @@ import {CancelToken} from 'apisauce';
 import LoginForm from './forms/LoginForm';
 import RegisterForm from './forms/RegisterForm';
 // import { deleteUser } from './api/apiUser';
+import NavBar from './components/NavBar';
 
 let a_token = '_ZNtMUTX6IXliOKN4rR7NRcl13u4vY7ipnhgmCrW9sI'
 
@@ -32,14 +33,15 @@ function App() {
   return (
     <>
       <ThemeProvider theme={readingTheme}>
-
-      <LoginForm/>
-      <RegisterForm/>
-      <Button onClick={handleClick}>Do API Call</Button>
-      <h1>Rate My Meme Reading List</h1>
-      <Card/>
-      <Rate/>
-      <ButtonGrp/>
+        <NavBar/>
+        
+          {/* <LoginForm/>
+          <RegisterForm/> */}
+          {/* <Button onClick={handleClick}>Do API Call</Button> */}
+          <h1>Rate My Meme Reading List</h1>
+          <Card/>
+          {/* <Rate/> */}
+          {/* <ButtonGrp/> */}
       </ThemeProvider>
       
     </>
