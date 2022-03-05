@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { ThemeProvider } from '@mui/material/styles';
-import Card from './components/Card';
+import AllBooks from './components/AllBooks';
 import Rate from './components/Rate';
 import ButtonGrp from './components/ButtonGrp';
 import Button from './components/Button';
@@ -39,7 +39,7 @@ function App() {
           <RegisterForm/> */}
           {/* <Button onClick={handleClick}>Do API Call</Button> */}
           <h1>Rate My Meme Reading List</h1>
-          <Card/>
+          <AllBooks/>
           {/* <Rate/> */}
           {/* <ButtonGrp/> */}
       </ThemeProvider>

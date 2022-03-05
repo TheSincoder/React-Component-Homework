@@ -197,7 +197,7 @@ import Box from '@mui/material/Box';
   ]
 
 
-export default function BasicCard({book}) {
+export default function AllBooks({book}) {
   
 
     
@@ -218,8 +218,8 @@ export default function BasicCard({book}) {
             loading="lazy"
           />
           <ImageListItemBar
-            title={book.title}
-            subtitle={book.author}
+            title={book.author}
+            subtitle={book.subject}
             actionIcon={
               <>
               <IconButton
