@@ -35,11 +35,11 @@ function App() {
       <ThemeProvider theme={readingTheme}>
         <NavBar/>
         
-          {/* <LoginForm/>
-          <RegisterForm/> */}
+          <LoginForm/>
+          {/* <RegisterForm/> */}
           {/* <Button onClick={handleClick}>Do API Call</Button> */}
           <h1>Rate My Meme Reading List</h1>
-          <AllBooks/>
+          {/* <AllBooks/> */}
           {/* <Rate/> */}
           {/* <ButtonGrp/> */}
       </ThemeProvider>

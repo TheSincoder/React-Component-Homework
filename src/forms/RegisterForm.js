@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import * as Yup from "yup";
 import { useFormik } from 'formik';
 import Button from "../components/Button";
 import { useState } from 'react';
 import TextField from '@mui/material/TextField';
+import useEditUser from '../hooks/useEditUser';
+import useDeleteUser from '../hooks/useDeleteUser';
+import {AppContext} from '../context/AppContext';
+
 
 
 
@@ -16,7 +20,12 @@ const FormSchema = Yup.object({
 })
 
 
-export default function RegisterForm( {user={firstName:'Hel', lastName:"Lo", email:'hello@email.com', password:'a'}} ) {
+export default function RegisterForm() {
+    const {user} = useContext(AppContext)
+    const [editUser, setEditUser] = useState({})
+    const [deleteUser, setDeleteUser] = useState({})
+    useEditUser(editUser)
+    useDeleteUser(deleteUser)
 
     const initialValues={
         firstName:user?.firstName ?? '',
@@ -28,9 +37,9 @@ export default function RegisterForm( {user={firstName:'Hel', lastName:"Lo", ema
     const handleSubmit =(values,resetForm)=>{
         console.log(values)
         if(!user){
-            console.log("Create")
+            console.log('User Created')
         }else{
-            console.log("Edit")
+            setEditUser({...values, id:user.id})
         }
         resetForm(initialValues);
     }
@@ -42,6 +51,10 @@ export default function RegisterForm( {user={firstName:'Hel', lastName:"Lo", ema
         enableReinitialize:true
 
     })
+
+    const handleDelete=()=>{
+        setDeleteUser(user)
+    }
 
   return (
     <form onSubmit={formik.handleSubmit}>
@@ -99,7 +112,8 @@ export default function RegisterForm( {user={firstName:'Hel', lastName:"Lo", ema
 
 
 
-<Button type="submit" sx={{ width: "100%" }}>Submit</Button>
+<Button type="submit" sx={{ width: "100%", my:1 }}>Submit</Button>
+<Button color="error" onClick={()=>handleDelete()}  sx={{width:"100%", my:1}}>Delete User</Button>
 
 </form>
   )

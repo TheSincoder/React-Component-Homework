@@ -17,17 +17,20 @@ const initialValues ={
     password: ""
 };
 
-const handleSubmit=(values)=>{
-    console.log(values)
-}
 
 
 export default function LoginForm() {
+    const handleSubmit=(values)=>{
+        // setLoginCreds(values)
+        console.log("logged in")
+    };
+
     const formik = useFormik({
         initialValues: initialValues,
         validationSchema:FormSchema,
         onSubmit:(values)=>{handleSubmit(values)}
     })
+
     
   return (
     <form onSubmit={formik.handleSubmit}>
