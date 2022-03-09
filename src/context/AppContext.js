@@ -1,4 +1,5 @@
-import {createContext, useState} from "react";
+import {createContext, useState, useReducer, useEffect} from "react";
+import {bookReducer, bookListActions} from "../reducers/bookReducer";
 
 export const AppContext = createContext();
 
@@ -11,8 +12,25 @@ const AppContextProvider = ({children})=>{
         }
     }
 
+    const getBookListFromLS=()=>{
+        let bookList = localStorage.getItem('book');
+        if(bookList){
+            return JSON.parse(bookList)
+        };
+        return []
+    };
+
     const [user, _setUser]=useState(getUserFromLS());
     const [book, setBook]=useState({});
+    const [bookList, dispatch] = useReducer(bookReducer,getBookListFromLS())
+
+    useEffect(
+        () =>{
+            localStorage.setItem('bookList', JSON.stringify(bookList))
+
+        },
+        [bookList]
+        )
     
 
     const values={
@@ -22,7 +40,17 @@ const AppContextProvider = ({children})=>{
             _setUser(user)
         },
         book,
-        setBook
+        setBook,
+        addToCart:(item)=>{
+            dispatch({type: bookListActions.addToList, item})
+        },
+        removeFromList:(item)=>{
+            dispatch({type: bookListActions.removeFromList, item})
+        },
+        empytList:()=>{
+            dispatch({type: bookListActions.emptyList})
+        },
+        
        
     }
 

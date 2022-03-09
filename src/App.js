@@ -15,6 +15,8 @@ import LoginForm from './forms/LoginForm';
 import RegisterForm from './forms/RegisterForm';
 // import { deleteUser } from './api/apiUser';
 import NavBar from './components/NavBar';
+import SingleBook from './components/SingleBook';
+
 
 let a_token = '_ZNtMUTX6IXliOKN4rR7NRcl13u4vY7ipnhgmCrW9sI'
 
@@ -33,15 +35,9 @@ function App() {
   return (
     <>
       <ThemeProvider theme={readingTheme}>
-        <NavBar/>
-        
-          <LoginForm/>
-          {/* <RegisterForm/> */}
-          {/* <Button onClick={handleClick}>Do API Call</Button> */}
-          <h1>Rate My Meme Reading List</h1>
-          {/* <AllBooks/> */}
-          {/* <Rate/> */}
-          {/* <ButtonGrp/> */}
+        <NavBar/>       
+          <AllBooks/>         
+          {/* <h1>Rate My Meme Reading List</h1>          */}
       </ThemeProvider>
       
     </>

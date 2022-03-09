@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useContext} from 'react';
 // import Card from '@mui/material/Card';
 // import CardActions from '@mui/material/CardActions';
 // import CardContent from '@mui/material/CardContent';
@@ -7,6 +7,7 @@ import * as React from 'react';
 // import Typography from '@mui/material/Typography';
 // import { getBooks } from '../api/apiBook';
 // import apiClientNoAuth from '../api/clientNoAuth'
+import {AppContext} from '../context/AppContext';
 
 import AddBoxIcon from '@mui/icons-material/AddBox';
 
@@ -197,10 +198,12 @@ import Box from '@mui/material/Box';
   ]
 
 
-export default function AllBooks({book}) {
-  
+export default function AllBooks({item}) {
+    const {addToList} = useContext(AppContext);
 
-    
+    const handleAddToList =(item)=>{
+        addToList(item)
+      };
   
   return (
 
@@ -225,6 +228,7 @@ export default function AllBooks({book}) {
               <IconButton
                 color='primary'
                 aria-label={`add to reading list`}
+                onClick={()=>{handleAddToList(item)}}
               >
                 <AddBoxIcon />
               </IconButton>

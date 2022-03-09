@@ -2,6 +2,7 @@ import React from 'react';
 import * as Yup from "yup";
 import { useFormik} from 'formik';
 import Button from '../components/Button';
+import SingleBook from '../components/SingleBook';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import InputAdornment from '@mui/material/InputAdornment';
@@ -27,6 +28,7 @@ export default function BookForm() {
 
 
     const handleSubmit=(values)=>{
+        <SingleBook>{values}</SingleBook>
         console.log(values)
         
     };
