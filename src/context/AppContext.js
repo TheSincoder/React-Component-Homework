@@ -41,7 +41,8 @@ const AppContextProvider = ({children})=>{
         },
         book,
         setBook,
-        addToCart:(item)=>{
+        bookList,
+        addToList:(item)=>{
             dispatch({type: bookListActions.addToList, item})
         },
         removeFromList:(item)=>{
