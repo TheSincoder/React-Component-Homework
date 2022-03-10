@@ -11,7 +11,12 @@ import {AppContext} from '../context/AppContext';
 
 
 export default function UserBooks() {
-    const {bookList} = useContext(AppContext);
+    const {bookList, removeFromList} = useContext(AppContext);
+    
+    const handleRemoveFromList =(item)=>{
+        removeFromList(item)
+      };
+    
 
 
   
@@ -21,10 +26,11 @@ return (
 
   <Box  display= 'grid' gap={1} gridTemplateColumns= "repeat(10, 1fr)">
   {/* <ImageList width='30%' > */}
-    
+    {console.log(bookList)}
     {bookList?.map((book) => (
-      <Box gridColumn="span 2">
-      <ImageListItem key={book.id}>
+      <Box key={book.id} gridColumn="span 2">
+      <ImageListItem >
+          
         <img
           src={book.img}
           srcSet={book.img}
@@ -37,11 +43,12 @@ return (
           actionIcon={
             <>
             <IconButton
-              color='primary'
-              aria-label={`remove from reading list`}
-            >
-              <RemoveCircleOutlineIcon />
-            </IconButton>
+                color='primary'
+                aria-label={`remove from reading list`}
+                onClick={()=>{handleRemoveFromList(book)}}
+              >
+                <RemoveCircleOutlineIcon />
+              </IconButton>
             
             </>
           }

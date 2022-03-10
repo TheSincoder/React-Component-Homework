@@ -17,19 +17,20 @@ import ImageListItemBar from '@mui/material/ImageListItemBar';
 
 import IconButton from '@mui/material/IconButton';
 import InfoIcon from '@mui/icons-material/Info';
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import CircularProgress from '@mui/material/CircularProgress';
+
 import Box from '@mui/material/Box';
 import useBooks from '../hooks/useGetBooks'
+import {useNavigate} from 'react-router-dom';
 
 
 
 
 
 
-export default function AllBooks({item}) {
+export default function AllBooks() {
     const {books} = useBooks()
     const {addToList} = useContext(AppContext);
+    const navigate = useNavigate();
 
     const handleAddToList =(item)=>{
         addToList(item)
@@ -56,9 +57,16 @@ export default function AllBooks({item}) {
             actionIcon={
               <>
               <IconButton
+                    sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
+                    aria-label={`info about ${book.name}`}
+                    onClick={()=>navigate('/books/'+book.id)}
+                    >
+                    <InfoIcon />
+                    </IconButton>
+              <IconButton
                 color='primary'
                 aria-label={`add to reading list`}
-                onClick={()=>{handleAddToList(item)}}
+                onClick={()=>{handleAddToList(book)}}
               >
                 <AddBoxIcon />
               </IconButton>

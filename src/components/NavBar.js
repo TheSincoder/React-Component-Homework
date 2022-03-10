@@ -12,6 +12,10 @@ import MenuBookIcon from '@mui/icons-material/MenuBook';
 import FaceIcon from '@mui/icons-material/Face';
 import BookForm from '../forms/BookForm';
 import { positions } from '@mui/system';
+import LoginIcon from '@mui/icons-material/Login';
+import LogoutIcon from '@mui/icons-material/Logout';
+import {Link} from 'react-router-dom';
+import ViewComfyAltIcon from '@mui/icons-material/ViewComfyAlt';
 
 
 export default function PrimarySearchAppBar() {
@@ -20,6 +24,8 @@ export default function PrimarySearchAppBar() {
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+
+  
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -131,11 +137,27 @@ export default function PrimarySearchAppBar() {
   
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+            <IconButton
+              size="large"
+              aria-label="show more"
+              aria-controls={mobileMenuId}
+              aria-haspopup="true"
+             color="primary"
+            >
+              <Link to='/books'>
+            <ViewComfyAltIcon/>
+                </Link>
+            </IconButton>
+            <IconButton size="large" aria-label="show new books" color="inherit">
               <Badge badgeContent={3} color="error">
+                <Link to ='/my-list'>
                 <MenuBookIcon />
+                </Link>
               </Badge>
             </IconButton>
+
+
+            
            
             <IconButton
               size="large"
@@ -148,6 +170,28 @@ export default function PrimarySearchAppBar() {
             >
               <FaceIcon />
             </IconButton>
+            <IconButton
+              size="large"
+              aria-label="show more"
+              aria-controls={mobileMenuId}
+              aria-haspopup="true"              
+              color="inherit"
+            >
+              <Link to='/login'>                 
+            <LoginIcon/>
+                </Link>
+            </IconButton>
+            <IconButton
+              size="large"
+              aria-label="show more"
+              aria-controls={mobileMenuId}
+              aria-haspopup="true"
+             color="primary"
+            >
+              <Link to='/logout'>
+            <LogoutIcon/>
+                </Link>
+            </IconButton>
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -156,10 +200,12 @@ export default function PrimarySearchAppBar() {
               aria-controls={mobileMenuId}
               aria-haspopup="true"
               onClick={handleMobileMenuOpen}
-              color="inherit"
+              color="primary"
             >
               <MoreIcon />
             </IconButton>
+            
+
           </Box>
         </Toolbar>
       </AppBar>

@@ -16,6 +16,12 @@ import RegisterForm from './forms/RegisterForm';
 // import { deleteUser } from './api/apiUser';
 import NavBar from './components/NavBar';
 import SingleBook from './components/SingleBook';
+import Logout from './views/Logout';
+import Login from './views/Login';
+import BookBrowser from './views/BookBrowser';
+import ReadingList from './views/ReadingList';
+import { Route, Routes } from 'react-router-dom';
+import Book from './components/Book'
 
 
 let a_token = '_ZNtMUTX6IXliOKN4rR7NRcl13u4vY7ipnhgmCrW9sI'
@@ -35,9 +41,17 @@ function App() {
   return (
     <>
       <ThemeProvider theme={readingTheme}>
-        <NavBar/>       
-          <AllBooks/>         
-          {/* <h1>Rate My Meme Reading List</h1>          */}
+        <NavBar/>   
+
+          
+          <Routes>    
+          {/* <h1>Rate My Meme Reading List</h1>        */} 
+          <Route path="/books" element={<BookBrowser/>}/> 
+          <Route path='/books/:bookId' element={<Book/>}/>
+          <Route path="/my-list" element={<ReadingList/>}/> 
+          <Route path="/login" element={<Login/>}/>
+          <Route path="/logout" element={<Logout/>}/>
+          </Routes>    
       </ThemeProvider>
       
     </>
